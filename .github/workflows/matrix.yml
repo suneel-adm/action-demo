@@ -1,0 +1,31 @@
+name: matrix-dynamic-simple
+on:
+  workflow_dispatch:
+    inputs:
+      OS:
+        description: provide all OS in stringified array format
+        required: true
+        default: "['app1','app2']"
+
+jobs:
+  prebuild:
+    runs-on: ubuntu-latest
+    outputs:
+      os: ${{ steps.set-matrix.outputs.os }}
+
+    steps:
+      - id: set-matrix
+        run: |
+          echo "::set-output name=os::${{github.event.inputs.OS}}"
+
+  build:
+    needs: prebuild
+    runs-on: ubuntu-latest
+    name: "${{ matrix.OS }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        OS: ${{fromJSON(needs.prebuild.outputs.os)}}
+    steps:
+      - name: running
+        run: echo "running job with ${{ matrix.OS }} "
