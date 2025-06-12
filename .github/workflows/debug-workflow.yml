@@ -38,6 +38,3 @@ jobs:
       
       - name: all variables
         run:  env
-      
-      - name: all vars
-        run:  vars
