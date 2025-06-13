@@ -48,7 +48,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
   buildname3-jobname:
-   
+    needs: buildname1-jobname
     runs-on: ubuntu-latest
     steps:
       - name: task2undrstesp
