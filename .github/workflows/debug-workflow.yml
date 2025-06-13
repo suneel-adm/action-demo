@@ -46,3 +46,10 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+  buildname3-jobname:
+    runs-on: ubuntu-latest
+    steps:
+      - name: task2undrstesp
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
