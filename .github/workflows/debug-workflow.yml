@@ -8,10 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  buildname-jobname:
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context
+      - name: task1undrstesp
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
