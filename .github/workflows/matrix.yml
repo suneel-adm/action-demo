@@ -29,3 +29,14 @@ jobs:
     steps:
       - name: running
         run: echo "running job with ${{ matrix.OS }} "
+  build2:
+    needs: prebuild
+    runs-on: ubuntu-latest
+    name: "${{ matrix.OS }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        OS: ${{fromJSON(needs.prebuild.outputs.os)}}
+    steps:
+      - name: running
+        run: echo "running job with ${{ matrix.OS }} "
