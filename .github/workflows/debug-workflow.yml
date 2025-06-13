@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  buildname-jobname:
+  buildname1-jobname:
     runs-on: ubuntu-latest
     steps:
       - name: task1undrstesp
@@ -38,3 +38,11 @@ jobs:
       
       - name: all variables
         run:  env
+
+  buildname2-jobname:
+    runs-on: ubuntu-latest
+    steps:
+      - name: task2undrstesp
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
